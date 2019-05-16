@@ -14,7 +14,7 @@
 
 由于使用Chrome作为本次测试的浏览器，需要下载对应版本的chromedriver驱动文件，下载链接为<http://chromedriver.storage.googleapis.com/index.html>。我的chrome版本为74.0.3729.157，于是下载了74.0.3729.6文件夹下的chromedriver。将解压得到的文件放到chrome浏览器的路径下，如：
 
-![](./chromedriver.jpg)
+![](./picture/chromedriver.jpg)
 
 然后在项目中根据上面的路径配置chromedriver
 
