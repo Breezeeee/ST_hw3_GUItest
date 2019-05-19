@@ -17,6 +17,8 @@ public class GUItest {
     public static void main(String[] args) {
         //配置chrome driver
         System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "/usr/bin/ChromeDriver");
+
 
         //启动chrome，最大化，并打开待测网站
         WebDriver chrome_driver = new ChromeDriver();
@@ -85,15 +87,18 @@ public class GUItest {
        chrome_driver.switchTo().frame(0);
         WebElement adFileUpload = chrome_driver.findElement(By.id("fileUpload"));
         adFileUpload.sendKeys("D:\\Proj\\SoftwareTest\\ST_hw3_GUItest\\src\\main\\resources\\2.jpg");
+//        adFileUpload.sendKeys("/Users/blindingend/Git/ST_hw3_GUItest/src/main/resources/2.jpg");
         wait_for_next(2000);
         Alert alert1 = chrome_driver.switchTo().alert();
         alert1.accept();
         wait_for_next(500);
         adFileUpload = chrome_driver.findElement(By.id("fileUpload"));
         adFileUpload.sendKeys("D:\\Proj\\SoftwareTest\\ST_hw3_GUItest\\src\\main\\resources\\test.txt");
+//        adFileUpload.sendKeys("/Users/blindingend/Git/ST_hw3_GUItest/src/main/resources/test.txt");
         wait_for_next(2000);
         adFileUpload = chrome_driver.findElement(By.id("fileUpload"));
         adFileUpload.sendKeys("D:\\Proj\\SoftwareTest\\ST_hw3_GUItest\\src\\main\\resources\\1.jpg");
+//        adFileUpload.sendKeys("/Users/blindingend/Git/ST_hw3_GUItest/src/main/resources/1.jpg");
         chrome_driver.switchTo().defaultContent();
         wait_for_next(500);
 
