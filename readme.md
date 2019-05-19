@@ -24,3 +24,8 @@ System.setProperty("webdriver.chrome.driver",
 ```
 
 selenium便可以使用了。
+
+### 测试代码
+
+注意配置chrome driver以及上传文件时使用的路径都是绝对路径，运行时需要更改为本地路径地址，文件保存在`src/main/resources`文件夹下。
+
