@@ -1,8 +1,13 @@
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 public class GUItest {
 
@@ -10,6 +15,7 @@ public class GUItest {
     private static void wait_for_next(int time) {
         try {
             Thread.sleep(time);
+//            Thread.sleep(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -25,6 +31,11 @@ public class GUItest {
         chrome_driver.manage().window().maximize();
         chrome_driver.get("https://www.wjx.cn/jq/39655995.aspx");
 
+        //获取title和url
+        String title = chrome_driver.getTitle();
+        String url = chrome_driver.getCurrentUrl();
+        System.out.println(title + "\n" + url);
+
         //下拉框测试：
         //选择选项1，再选择选项2，再选择选项3
         //结果应该为选项3
@@ -35,7 +46,6 @@ public class GUItest {
         wait_for_next(500);
         select.selectByIndex(3);
         wait_for_next(500);
-
 
         //单选框测试：
         //选择选项3，再选择选项1，再选择选项2
@@ -135,6 +145,21 @@ public class GUItest {
         WebElement text = chrome_driver.findElement(By.name("q1"));
         text.sendKeys("test");
         wait_for_next(500);
+
+        //cookies
+        Set<Cookie> cookies = chrome_driver.manage().getCookies();
+        System.out.println(String.format("Domain -> name -> value -> expiry -> path"));
+        for (Cookie c : cookies)
+            System.out.println(String.format("%s -> %s -> %s -> %s -> %s",
+                    c.getDomain(), c.getName(), c.getValue(), c.getExpiry(),c.getPath()));
+
+        //截图
+        File screenShotFile = ((TakesScreenshot) chrome_driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(screenShotFile, new File("D:/Proj/SoftwareTest/ST_hw3_GUItest/src/main/resources/test.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //提交按钮测试
         chrome_driver.findElement(By.id("submit_button")).click();
